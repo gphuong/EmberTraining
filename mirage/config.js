@@ -34,7 +34,7 @@ export default function() {
               city: 'Portland',
               category: 'Apartment',
               bedrooms: 3,
-              image: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Wheeldon_Apartment_Building_-_Portland_Oregon.jpg',
+              image: 'https://upload.wikimedPia.org/wikipedia/commons/f/f7/Wheeldon_Apartment_Building_-_Portland_Oregon.jpg',
               description: "Convenience is at your doorstep with this charming downtown rental. Great restaurants and active night life are within a few feet."
           }
     }]
@@ -48,4 +48,8 @@ export default function() {
         return {data: rentals };
       }
     });
+    //Find and return the provided rental from our rental list above
+    this.get('/rentals/:id', function(db, request){
+      return {data: rentals.find((rental) => request.params.id === rental.id)};
+    })
 }
